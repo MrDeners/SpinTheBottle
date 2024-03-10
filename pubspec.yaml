@@ -59,6 +59,7 @@ flutter:
     - assets/HeartsCounterIcon.png
     - assets/MainPageBackground.png
     - assets/Logo.png
+    - assets/MenuBackground.png
 
   uses-material-design: true
 

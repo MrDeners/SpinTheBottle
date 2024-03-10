@@ -68,10 +68,40 @@ class _HeartsCounterState extends State<HeartsCounter> {
 //const AssetImage('assets/Logo.png');    //* Logo
 
 class MainButton extends StatelessWidget {
-  const MainButton({super.key});
+  final String label;
+  final Color color;
+  final VoidCallback onClick;
+  const MainButton(
+      {super.key,
+      required this.label,
+      required this.onClick,
+      this.color = const Color(0xFFBE0279)});
 
   @override
   Widget build(BuildContext context) {
-    return const ElevatedButton();
+    return Material(
+        color: Colors.transparent,
+        child: ElevatedButton(
+          style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color)),
+          onPressed: onClick,
+          child: Text(label),
+        ));
+  }
+}
+
+class Menu extends StatelessWidget {
+  const Menu({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/MenuBackground.png'),
+              fit: BoxFit.cover)),
+    ));
   }
 }
