@@ -1,52 +1,77 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:spin_the_bottle/classes/userData.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-void main() {
-  runApp(SpinTheBottle());
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.landscapeRight,
-  ]);
-}
+class StartPage extends StatelessWidget {
+  final UserData user = UserData('firstName', 'secondName', 777);
 
-class SpinTheBottle extends StatelessWidget {
+  StartPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Spin the Bottle",
-      theme: ThemeData(
-        primaryColor: const Color(0xFF160531),
-        scaffoldBackgroundColor: const Color(0xFF160531),
-        decoration: BoxDecoration()
-        //textTheme: TextTheme(title: TextStyle(color: Color(0xFFEDEDED))),
+        theme: ThemeData(
+            scaffoldBackgroundColor: Colors.black,
+            textTheme: const TextTheme(
+              bodyLarge: TextStyle(
+                  fontFamily: "Rounds", fontSize: 40, color: Color(0xFFEDEDED)),
+              bodySmall: TextStyle(
+                  fontFamily: "Rounds", fontSize: 25, color: Color(0xFFEDEDED)),
+            )),
+        home: Scaffold(
+          body: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/MainPageBackground.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: HeartsCounter(user: user)),
+        ));
+  }
+}
+
+class HeartsCounter extends StatefulWidget {
+  final UserData user;
+  const HeartsCounter({super.key, required this.user});
+
+  @override
+  State<HeartsCounter> createState() => _HeartsCounterState();
+}
+
+class _HeartsCounterState extends State<HeartsCounter> {
+  late UserData user;
+  @override
+  void initState() {
+    super.initState();
+    user = widget.user;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton.icon(
+      label: Text(
+        user.heartsAmount.toString(),
+        style: Theme.of(context).textTheme.bodySmall,
       ),
-      home: const MainPage(),
+      icon: Image.asset('assets/HeartsCounterIcon.png'),
+      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(null)),
+      onPressed: () {
+        //TODO: Move to donate page
+      },
     );
   }
 }
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+//const AssetImage('assets/Logo.png');    //* Logo
 
-  @override
-  State<MainPage> createState() => _MainPageState();
-}
+class MainButton extends StatelessWidget {
+  const MainButton({super.key});
 
-class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFF1E1E1E),
-      body: Container(
-        width: 100,
-        height: 100,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/MainPageBackground.png"),
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
-    );
+    return const ElevatedButton();
   }
 }
