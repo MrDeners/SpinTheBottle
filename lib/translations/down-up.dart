@@ -21,16 +21,26 @@ class EnterExitRoute extends PageRouteBuilder {
             children: <Widget>[
               SlideTransition(
                 position: Tween<Offset>(
-                  begin: const Offset(0.0, -1.0),
-                  end: const Offset(0.0, 0.0),
-                ).animate(animation),
+                  begin: const Offset(0.0, 0.0),
+                  end: const Offset(0.0, -1.0),
+                ).animate(
+                  CurvedAnimation(
+                    parent: animation,
+                    curve: Curves.easeInOut,
+                  ),
+                ),
                 child: exitPage,
               ),
               SlideTransition(
                 position: Tween<Offset>(
                   begin: const Offset(0.0, 1.0),
                   end: const Offset(0.0, 0.0),
-                ).animate(animation),
+                ).animate(
+                  CurvedAnimation(
+                    parent: animation,
+                    curve: Curves.easeInOut,
+                  ),
+                ),
                 child: enterPage,
               )
             ],

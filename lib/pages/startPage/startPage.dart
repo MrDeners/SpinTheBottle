@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:spin_the_bottle/classes/userData.dart';
-import 'package:spin_the_bottle/translation/translations.dart';
+import 'package:spin_the_bottle/translations/translations.dart';
 import 'package:spin_the_bottle/pages/pages.dart';
+import 'package:spin_the_bottle/widgets/widgets.dart';
+import 'package:spin_the_bottle/pages/startPage/functions.dart';
 
 class StartPage extends StatelessWidget {
+  //TODO: Get statefull, becoaus stateless cudn't have nested statefull widgets
   final UserData user = const UserData(
       firstName: 'Denis',
       secondName: 'Malush',
@@ -111,60 +114,6 @@ class _HeartsCounterState extends State<HeartsCounter> {
   }
 }
 
-class MainButton extends StatelessWidget {
-  final String label;
-  final Color color;
-  final VoidCallback onClick;
-  final double fontSize;
-  final double paddingBottom;
-  const MainButton(
-      {super.key,
-      required this.label,
-      required this.onClick,
-      this.fontSize = 40,
-      this.color = const Color(0xFFBE0279),
-      this.paddingBottom = 0});
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-        color: Colors.transparent,
-        child: Column(
-          children: [
-            ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(color)),
-              onPressed: onClick,
-              child: Text(
-                label,
-                style: TextStyle(
-                    fontFamily: "Rounds",
-                    fontSize: fontSize,
-                    color: const Color(0xFFEDEDED)),
-              ),
-            ),
-            Padding(padding: EdgeInsets.only(bottom: paddingBottom))
-          ],
-        ));
-  }
-}
-
-class ImageButton extends StatelessWidget {
-  final String imagePath;
-  final VoidCallback onPressed;
-
-  const ImageButton(
-      {super.key, required this.imagePath, required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: Image.asset(imagePath),
-      onPressed: onPressed,
-    );
-  }
-}
-
 class Menu extends StatelessWidget {
   const Menu({super.key});
 
@@ -185,7 +134,7 @@ class Menu extends StatelessWidget {
                     flex: 20,
                     child: ImageButton(
                         imagePath: 'assets/MostPopularDonateButton.png',
-                        onPressed: GetMostPopularDonate),
+                        onPressed: letMostPopularDonate),
                   ),
                   const Spacer(flex: 7),
                   Expanded(
@@ -199,8 +148,7 @@ class Menu extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 EnterExitRoute(
-                                    exitPage: this,
-                                    enterPage: PlayFieldPage()));
+                                    exitPage: this, enterPage: LoadingPage()));
                           },
                         ),
                         MainButton(label: 'ПРОФИЛЬ', onClick: () {}),
@@ -219,8 +167,4 @@ class Menu extends StatelessWidget {
               ),
             )));
   }
-}
-
-void GetMostPopularDonate() {
-  //TODO: Create best donate buying function
 }

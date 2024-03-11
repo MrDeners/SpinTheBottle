@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spin_the_bottle/classes/userData.dart';
-import 'package:spin_the_bottle/translation/translations.dart';
+import 'package:spin_the_bottle/translations/translations.dart';
 
 class PlayFieldPage extends StatelessWidget {
   final UserData user = const UserData(
@@ -50,11 +50,19 @@ class Table extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/TableSkins/MainSkin.png'),
+          image: AssetImage('assets/TableSkins/MainTableSkin.png'),
           fit: BoxFit.cover,
         ),
       ),
-      child: SafeArea(child: Text("Hello")),
+      child: SafeArea(
+          right: false,
+          child: Column(
+            children: [
+              Row(
+                children: [],
+              )
+            ],
+          )),
     );
   }
 }
@@ -72,7 +80,7 @@ class Chat extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
-      child: SafeArea(child: Text("Hello")),
+      child: SafeArea(left: false, child: Text("Hello")),
     );
     ;
   }

@@ -56,6 +56,7 @@ dev_dependencies:
 
 flutter:
   assets:
+#StartPage
     - assets/HeartsCounterIcon.png
     - assets/MainPageBackground.png
     - assets/Logo.png
@@ -63,10 +64,19 @@ flutter:
     - assets/MostPopularDonateButton.png
     - assets/BPButton.png
 
+#PalyFieldPage
     - assets/PlayFieldBackground.png
     - assets/ChatBackground.png
 
-    - assets/TableSkins/MainSkin.png
+#LoadingPage
+    - assets/LoadingPageBackground.png
+    - assets/BigBottle.png
+    
+#BottleSkins
+    - assets/BottleSkins/MainBottleSkin.png
+
+#TablePage
+    - assets/TableSkins/MainTableSkin.png
 
   uses-material-design: true
 
