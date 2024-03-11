@@ -147,7 +147,7 @@ class Menu extends StatelessWidget {
                           onClick: () {
                             Navigator.push(
                                 context,
-                                EnterExitRoute(
+                                DownUp(
                                     exitPage: this, enterPage: LoadingPage()));
                           },
                         ),

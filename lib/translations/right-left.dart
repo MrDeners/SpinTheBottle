@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class DownUpTranslation extends PageRouteBuilder {
+class RightLeftTranslation extends PageRouteBuilder {
   final Widget enterPage;
   final Widget exitPage;
-  DownUpTranslation({required this.exitPage, required this.enterPage})
+  RightLeftTranslation({required this.exitPage, required this.enterPage})
       : super(
           pageBuilder: (
             BuildContext context,
@@ -22,7 +22,7 @@ class DownUpTranslation extends PageRouteBuilder {
               SlideTransition(
                 position: Tween<Offset>(
                   begin: const Offset(0.0, 0.0),
-                  end: const Offset(0.0, -1.0),
+                  end: const Offset(-1.0, 0.0),
                 ).animate(
                   CurvedAnimation(
                     parent: animation,
@@ -33,7 +33,7 @@ class DownUpTranslation extends PageRouteBuilder {
               ),
               SlideTransition(
                 position: Tween<Offset>(
-                  begin: const Offset(0.0, 1.0),
+                  begin: const Offset(1.0, 0.0),
                   end: const Offset(0.0, 0.0),
                 ).animate(
                   CurvedAnimation(
