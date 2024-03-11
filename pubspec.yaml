@@ -60,6 +60,13 @@ flutter:
     - assets/MainPageBackground.png
     - assets/Logo.png
     - assets/MenuBackground.png
+    - assets/MostPopularDonateButton.png
+    - assets/BPButton.png
+
+    - assets/PlayFieldBackground.png
+    - assets/ChatBackground.png
+
+    - assets/TableSkins/MainSkin.png
 
   uses-material-design: true
 
