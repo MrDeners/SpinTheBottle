@@ -67,6 +67,9 @@ flutter:
 #PalyFieldPage
     - assets/PlayFieldBackground.png
     - assets/ChatBackground.png
+    - assets/GiftsButton.png
+    - assets/ReturnButton.png
+    - assets/RewardsButton.png
 
 #LoadingPage
     - assets/LoadingPageBackground.png

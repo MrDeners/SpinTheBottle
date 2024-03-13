@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:spin_the_bottle/classes/userData.dart';
+import 'package:spin_the_bottle/classes/globalVariables.dart';
+
+import 'package:spin_the_bottle/classes/user.dart';
 import 'package:spin_the_bottle/translations/translations.dart';
 import 'package:spin_the_bottle/pages/pages.dart';
 import 'package:spin_the_bottle/widgets/widgets.dart';
@@ -7,13 +9,9 @@ import 'package:spin_the_bottle/pages/startPage/functions.dart';
 
 class StartPage extends StatelessWidget {
   //TODO: Get statefull, becoaus stateless cudn't have nested statefull widgets
-  final UserData user = const UserData(
-      firstName: 'Denis',
-      secondName: 'Malush',
-      heartsAmount: 777777,
-      age: "18");
+  final User user = GlobalVariables.user;
 
-  const StartPage({super.key});
+  StartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +46,7 @@ class StartPage extends StatelessWidget {
                     )),
               ),
             ),
-            const Expanded(flex: 65, child: Menu())
+            Expanded(flex: 65, child: Menu(user: user))
           ],
         ),
       )),
@@ -57,7 +55,7 @@ class StartPage extends StatelessWidget {
 }
 
 class MenuTop extends StatelessWidget {
-  final UserData user;
+  final User user;
   MenuTop({super.key, required this.user});
 
   @override
@@ -68,7 +66,7 @@ class MenuTop extends StatelessWidget {
           flex: 24,
           child: Container(
             alignment: Alignment.topLeft,
-            child: HeartsCounter(user: user),
+            child: HeartsCounter(heartsAmount: user.heartsAmount),
           ),
         ),
         Expanded(
@@ -82,40 +80,9 @@ class MenuTop extends StatelessWidget {
   }
 }
 
-class HeartsCounter extends StatefulWidget {
-  final UserData user;
-  const HeartsCounter({super.key, required this.user});
-
-  @override
-  State<HeartsCounter> createState() => _HeartsCounterState();
-}
-
-class _HeartsCounterState extends State<HeartsCounter> {
-  late UserData user;
-  @override
-  void initState() {
-    super.initState();
-    user = widget.user;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton.icon(
-      label: Text(
-        user.heartsAmount.toString(),
-        style: Theme.of(context).textTheme.bodySmall,
-      ),
-      icon: Image.asset('assets/HeartsCounterIcon.png'),
-      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(null)),
-      onPressed: () {
-        //TODO: Move to donate page
-      },
-    );
-  }
-}
-
 class Menu extends StatelessWidget {
-  const Menu({super.key});
+  final User user;
+  const Menu({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -147,8 +114,10 @@ class Menu extends StatelessWidget {
                           onClick: () {
                             Navigator.push(
                                 context,
-                                DownUp(
-                                    exitPage: this, enterPage: LoadingPage()));
+                                DownUpTranslation(
+                                  exitPage: this,
+                                  enterPage: LoadingPage(),
+                                ));
                           },
                         ),
                         MainButton(label: 'ПРОФИЛЬ', onClick: () {}),

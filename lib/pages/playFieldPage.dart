@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:spin_the_bottle/classes/userData.dart';
+import 'package:spin_the_bottle/pages/pages.dart';
 import 'package:spin_the_bottle/translations/translations.dart';
+import 'package:spin_the_bottle/widgets/widgets.dart';
 
 class PlayFieldPage extends StatelessWidget {
-  final UserData user = const UserData(
-      firstName: 'Denis',
-      secondName: 'Malush',
-      heartsAmount: 777777,
-      age: "18");
-
-  const PlayFieldPage({super.key});
+  PlayFieldPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
+    final UserData user = arguments['user'];
+    final Map argumenssts = GlobalVariables.arguments;
     return MaterialApp(
       theme: ThemeData(
           scaffoldBackgroundColor: Colors.black,
@@ -32,17 +31,18 @@ class PlayFieldPage extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              child: const Row(children: [
-                Expanded(flex: 680, child: Table()),
-                Spacer(flex: 5),
-                Expanded(flex: 315, child: Chat())
+              child: Row(children: [
+                Expanded(flex: 680, child: Table(user: user)),
+                const Spacer(flex: 5),
+                const Expanded(flex: 315, child: Chat())
               ]))),
     );
   }
 }
 
 class Table extends StatelessWidget {
-  const Table({super.key});
+  final UserData user;
+  const Table({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,25 @@ class Table extends StatelessWidget {
           child: Column(
             children: [
               Row(
-                children: [],
+                children: [
+                  Expanded(
+                      child: ImageButton(
+                          imagePath: 'assets/ReturnButton.png',
+                          onPressed: () {})),
+                  Expanded(
+                      child: HeartsCounter(
+                    heartsAmount: user.heartsAmount,
+                  )),
+                  Spacer(),
+                  Expanded(
+                      child: ImageButton(
+                          imagePath: 'assets/RewardsButton.png',
+                          onPressed: () {})),
+                  Expanded(
+                      child: ImageButton(
+                          imagePath: 'assets/GiftsButton.png',
+                          onPressed: () {})),
+                ],
               )
             ],
           )),
@@ -82,6 +100,5 @@ class Chat extends StatelessWidget {
       ),
       child: SafeArea(left: false, child: Text("Hello")),
     );
-    ;
   }
 }

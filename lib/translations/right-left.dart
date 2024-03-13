@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 class RightLeftTranslation extends PageRouteBuilder {
   final Widget enterPage;
   final Widget exitPage;
-  RightLeftTranslation({required this.exitPage, required this.enterPage})
-      : super(
+  RightLeftTranslation({
+    required this.exitPage,
+    required this.enterPage,
+  }) : super(
           pageBuilder: (
             BuildContext context,
             Animation<double> animation,

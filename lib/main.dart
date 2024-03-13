@@ -7,7 +7,7 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) => StartPage(),
-      '/PlayField': (context) => const PlayFieldPage(),
+      '/PlayField': (context) => PlayFieldPage(),
       // '/Profile': (context) => const UserProfilePage(),
       // '/Settings': (context) => const SettingsPage(),
     },

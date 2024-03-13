@@ -5,15 +5,37 @@ import 'package:spin_the_bottle/translations/translations.dart';
 import 'package:spin_the_bottle/pages/pages.dart';
 
 class LoadingPage extends StatefulWidget {
-  const LoadingPage({super.key});
+  const LoadingPage({Key? key}) : super(key: key);
 
   @override
   State<LoadingPage> createState() => _LoadingPageState();
 }
 
 class _LoadingPageState extends State<LoadingPage> {
+  late Map arguments;
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 5), () {
+      print(arguments);
+      Navigator.push(
+          context,
+          RightLeftTranslation(
+              exitPage: const StartPage(),
+              enterPage: PlayFieldPage(),
+              arguments: ModalRoute.of(context)!.settings.arguments as Map));
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    arguments = ModalRoute.of(context)!.settings.arguments as Map;
+
     return MaterialApp(
         theme: ThemeData(
             textTheme: const TextTheme(
@@ -59,7 +81,7 @@ class _LoadingPageState extends State<LoadingPage> {
 }
 
 class Bottle extends StatefulWidget {
-  const Bottle({super.key});
+  const Bottle({Key? key}) : super(key: key);
 
   @override
   State<Bottle> createState() => _BottleState();
@@ -93,7 +115,7 @@ class _BottleState extends State<Bottle> with SingleTickerProviderStateMixin {
 }
 
 class Dots extends StatefulWidget {
-  const Dots({super.key});
+  const Dots({Key? key}) : super(key: key);
 
   @override
   State<Dots> createState() => _DotsState();

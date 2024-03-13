@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 class DownUpTranslation extends PageRouteBuilder {
   final Widget enterPage;
   final Widget exitPage;
-  DownUpTranslation({required this.exitPage, required this.enterPage})
-      : super(
+  DownUpTranslation({
+    required this.exitPage,
+    required this.enterPage,
+  }) : super(
           pageBuilder: (
             BuildContext context,
             Animation<double> animation,
