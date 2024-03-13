@@ -1,11 +1,11 @@
-class UserData {
+class User {
   final String _firstName;
   final String _secondName;
   final int _heartsAmount;
   final String _age;
   final bool _isPatron;
 
-  const UserData(
+  const User(
       {required String firstName,
       required String secondName,
       String age = "",

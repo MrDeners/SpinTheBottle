@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:spin_the_bottle/classes/userData.dart';
+
+import 'package:spin_the_bottle/classes/user.dart';
+import 'package:spin_the_bottle/classes/globalVariables.dart';
 import 'package:spin_the_bottle/pages/pages.dart';
 import 'package:spin_the_bottle/translations/translations.dart';
 import 'package:spin_the_bottle/widgets/widgets.dart';
@@ -9,9 +11,7 @@ class PlayFieldPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
-    final UserData user = arguments['user'];
-    final Map argumenssts = GlobalVariables.arguments;
+    final User user = GlobalVariables.user;
     return MaterialApp(
       theme: ThemeData(
           scaffoldBackgroundColor: Colors.black,
@@ -41,7 +41,7 @@ class PlayFieldPage extends StatelessWidget {
 }
 
 class Table extends StatelessWidget {
-  final UserData user;
+  final User user;
   const Table({super.key, required this.user});
 
   @override

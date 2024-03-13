@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:spin_the_bottle/classes/userData.dart';
 import 'package:spin_the_bottle/translations/translations.dart';
 import 'package:spin_the_bottle/pages/pages.dart';
 
@@ -12,18 +11,16 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
-  late Map arguments;
   @override
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 5), () {
-      print(arguments);
       Navigator.push(
           context,
           RightLeftTranslation(
-              exitPage: const StartPage(),
-              enterPage: PlayFieldPage(),
-              arguments: ModalRoute.of(context)!.settings.arguments as Map));
+            exitPage: StartPage(),
+            enterPage: PlayFieldPage(),
+          ));
     });
   }
 
@@ -34,8 +31,6 @@ class _LoadingPageState extends State<LoadingPage> {
 
   @override
   Widget build(BuildContext context) {
-    arguments = ModalRoute.of(context)!.settings.arguments as Map;
-
     return MaterialApp(
         theme: ThemeData(
             textTheme: const TextTheme(
