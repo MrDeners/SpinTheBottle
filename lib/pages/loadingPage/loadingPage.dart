@@ -63,7 +63,7 @@ class _LoadingPageState extends State<LoadingPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Bottle(),
+                      const LoadingBottle(),
                       Text("ЗАГРУЗКА",
                           style: Theme.of(context).textTheme.bodyLarge),
                       const Dots(),
@@ -75,14 +75,15 @@ class _LoadingPageState extends State<LoadingPage> {
   }
 }
 
-class Bottle extends StatefulWidget {
-  const Bottle({Key? key}) : super(key: key);
+class LoadingBottle extends StatefulWidget {
+  const LoadingBottle({Key? key}) : super(key: key);
 
   @override
-  State<Bottle> createState() => _BottleState();
+  State<LoadingBottle> createState() => _LoadingBottleState();
 }
 
-class _BottleState extends State<Bottle> with SingleTickerProviderStateMixin {
+class _LoadingBottleState extends State<LoadingBottle>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override

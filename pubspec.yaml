@@ -69,7 +69,9 @@ flutter:
     - assets/ChatBackground.png
     - assets/GiftsButton.png
     - assets/ReturnButton.png
-    - assets/RewardsButton.png
+    - assets/ProfileButton.png
+    - assets/ChangeTableButton.png
+    - assets/DefaultAvatar.png
 
 #LoadingPage
     - assets/LoadingPageBackground.png
@@ -78,8 +80,12 @@ flutter:
 #BottleSkins
     - assets/BottleSkins/MainBottleSkin.png
 
-#TablePage
+#TableSkins
     - assets/TableSkins/MainTableSkin.png
+
+#Borders
+    - assets/Borders/DefaultBorder.png
+    - assets/Borders/RedBorder.png
 
   uses-material-design: true
 

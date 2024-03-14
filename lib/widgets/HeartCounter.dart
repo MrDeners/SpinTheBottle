@@ -21,7 +21,7 @@ class _HeartsCounterState extends State<HeartsCounter> {
     return TextButton.icon(
       label: Text(
         heartsAmount.toString(),
-        style: Theme.of(context).textTheme.bodySmall,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
       icon: Image.asset('assets/HeartsCounterIcon.png'),
       style: ButtonStyle(backgroundColor: MaterialStateProperty.all(null)),

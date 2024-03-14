@@ -21,7 +21,7 @@ class StartPage extends StatelessWidget {
           textTheme: const TextTheme(
             bodyLarge: TextStyle(
                 fontFamily: "Rounds", fontSize: 40, color: Color(0xFFEDEDED)),
-            bodySmall: TextStyle(
+            bodyMedium: TextStyle(
                 fontFamily: "Rounds", fontSize: 25, color: Color(0xFFEDEDED)),
           )),
       home: Scaffold(

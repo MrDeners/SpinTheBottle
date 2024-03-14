@@ -3,15 +3,7 @@ import 'package:flutter/services.dart';
 import 'pages/Pages.dart';
 
 void main() {
-  runApp(MaterialApp(
-    initialRoute: '/',
-    routes: {
-      '/': (context) => StartPage(),
-      '/PlayField': (context) => PlayFieldPage(),
-      // '/Profile': (context) => const UserProfilePage(),
-      // '/Settings': (context) => const SettingsPage(),
-    },
-  ));
+  runApp(StartPage());
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,
