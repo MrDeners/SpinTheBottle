@@ -7,11 +7,15 @@ import 'package:spin_the_bottle/pages/pages.dart';
 import 'package:spin_the_bottle/widgets/widgets.dart';
 import 'package:spin_the_bottle/pages/startPage/functions.dart';
 
-class StartPage extends StatelessWidget {
-  //TODO: Get statefull, becoaus stateless cudn't have nested statefull widgets
-  final User user = GlobalVariables.user;
+class StartPage extends StatefulWidget {
+  const StartPage({super.key});
 
-  StartPage({super.key});
+  @override
+  State<StartPage> createState() => _StartPageState();
+}
+
+class _StartPageState extends State<StartPage> {
+  final User user = GlobalVariables.user;
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +58,15 @@ class StartPage extends StatelessWidget {
   }
 }
 
-class MenuTop extends StatelessWidget {
+class MenuTop extends StatefulWidget {
   final User user;
   MenuTop({super.key, required this.user});
 
+  @override
+  State<MenuTop> createState() => _MenuTopState();
+}
+
+class _MenuTopState extends State<MenuTop> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -66,7 +75,7 @@ class MenuTop extends StatelessWidget {
           flex: 24,
           child: Container(
             alignment: Alignment.topLeft,
-            child: HeartsCounter(heartsAmount: user.heartsAmount),
+            child: HeartsCounter(heartsAmount: widget.user.heartsAmount),
           ),
         ),
         Expanded(
