@@ -3,6 +3,7 @@ import 'package:spin_the_bottle/classes/tableSkin.dart';
 import 'package:spin_the_bottle/classes/bottleSkin.dart';
 
 class PlayTable {
+  // ignore: non_constant_identifier_names
   final int _ID;
   List<User> _users;
   TableSkin _tableSkin;
@@ -60,6 +61,7 @@ class PlayTable {
 
   int get ID => _ID;
   List<User> get users => _users;
+  List<User> get selectedUsers => _selectedUsers;
   TableSkin get tableSkin => _tableSkin;
   BottleSkin get bottleSkin => _bottleSkin;
   int get spinnerID => _spinnerID;

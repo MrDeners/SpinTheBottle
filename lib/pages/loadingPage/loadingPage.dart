@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:spin_the_bottle/translations/translations.dart';
@@ -18,8 +19,8 @@ class _LoadingPageState extends State<LoadingPage> {
       Navigator.push(
           context,
           RightLeftTranslation(
-            exitPage: StartPage(),
-            enterPage: PlayFieldPage(),
+            exitPage: const StartPage(),
+            enterPage: const PlayFieldPage(),
           ));
     });
   }

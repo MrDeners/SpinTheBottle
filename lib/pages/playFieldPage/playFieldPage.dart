@@ -1,5 +1,5 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 import 'package:spin_the_bottle/pages/playFieldPage/functions.dart';
 import 'package:spin_the_bottle/classes/table.dart';
@@ -10,7 +10,7 @@ import 'package:spin_the_bottle/translations/translations.dart';
 import 'package:spin_the_bottle/widgets/widgets.dart';
 
 class PlayFieldPage extends StatelessWidget {
-  PlayFieldPage({super.key});
+  const PlayFieldPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class PlayFieldPage extends StatelessWidget {
       ID: 255355,
     );
 
-    table.addUser(user);
+    table.addUser(user); //TODO: Move to Server
 
     return MaterialApp(
       theme: ThemeData(
@@ -395,7 +395,7 @@ class _PlayerState extends State<Player> {
         Expanded(
           flex: 2,
           child: Container(
-            alignment: Alignment(0, -2),
+            alignment: const Alignment(0, -2),
             child: Text(
               "${user.firstName} ${user.secondName}, ${user.age}",
               style: Theme.of(context).textTheme.labelSmall,

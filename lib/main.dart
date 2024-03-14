@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'pages/Pages.dart';
 
 void main() {
-  runApp(StartPage());
+  runApp(const StartPage());
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,
