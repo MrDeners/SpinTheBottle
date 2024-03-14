@@ -41,13 +41,13 @@ class PlayTable {
       },
       TableSkin tableSkin = const TableSkin(
         ID: 0,
-        skin: 'assets/TableSkins/MainTableSkin.png',
+        skin: 'assets/TableSkins/MainTableSkin.svg',
         price: 0,
         isAvailable: true,
       ),
       BottleSkin bottleSkin = const BottleSkin(
         ID: 0,
-        skin: 'assets/BottleSkins/MainBottleSkin.png',
+        skin: 'assets/BottleSkins/MainBottleSkin.svg',
         price: 0,
         isAvailable: true,
       )})
@@ -75,6 +75,7 @@ class PlayTable {
   void addUser(User user) {
     if (_users.length < 8) {
       _users.add(user);
+      user.chair = _users.length;
     } else {
       //TODO: user.ChangeTable
     }

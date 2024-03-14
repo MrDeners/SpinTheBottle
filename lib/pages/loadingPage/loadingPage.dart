@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:async';
 import 'package:spin_the_bottle/translations/translations.dart';
 import 'package:spin_the_bottle/pages/pages.dart';
@@ -109,7 +110,7 @@ class _LoadingBottleState extends State<LoadingBottle>
   Widget build(BuildContext context) {
     return RotationTransition(
       turns: _controller,
-      child: Image.asset('assets/BigBottle.png'),
+      child: SvgPicture.asset('assets/BigBottle.svg'),
     );
   }
 }

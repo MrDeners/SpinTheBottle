@@ -15,11 +15,15 @@ class PlayFieldPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final User user = GlobalVariables.user;
-    PlayTable table = PlayTable(
-      ID: 255355,
-    );
-
+    PlayTable table = PlayTable(ID: 255355);
     table.addUser(user); //TODO: Move to Server
+    table.addUser(user);
+    table.addUser(user);
+    table.addUser(user);
+    table.addUser(user);
+    table.addUser(user);
+    table.addUser(user);
+    table.addUser(user);
 
     return MaterialApp(
       theme: ThemeData(
@@ -118,10 +122,8 @@ class _PlayFieldState extends State<PlayField> {
           child: Stack(
             children: [
               TableButtons(table: table),
-              TableBottle(
-                table: table,
-              ),
-              const TablePlayers(),
+              TableBottle(table: table),
+              TablePlayers(table: table),
             ],
           )),
     );
@@ -152,8 +154,8 @@ class _TableButtonsState extends State<TableButtons> {
                   flex: 5,
                   child: Container(
                     alignment: Alignment.topLeft,
-                    child: ImageButton(
-                        imagePath: 'assets/ReturnButton.png',
+                    child: ImageButtonSVG(
+                        imagePath: 'assets/ReturnButton.svg',
                         onPressed: () {
                           //TODO: Create server request to leave
                           Navigator.pushReplacement(
@@ -179,16 +181,16 @@ class _TableButtonsState extends State<TableButtons> {
                   flex: 5,
                   child: Container(
                     alignment: Alignment.topRight,
-                    child: ImageButton(
-                        imagePath: 'assets/ProfileButton.png',
+                    child: ImageButtonSVG(
+                        imagePath: 'assets/ProfileButton.svg',
                         onPressed: () {}),
                   )),
               Expanded(
                   flex: 5,
                   child: Container(
                     alignment: Alignment.topLeft,
-                    child: ImageButton(
-                        imagePath: 'assets/GiftsButton.png', onPressed: () {}),
+                    child: ImageButtonSVG(
+                        imagePath: 'assets/MusicButton.svg', onPressed: () {}),
                   )),
             ],
           ),
@@ -213,9 +215,9 @@ class _TableButtonsState extends State<TableButtons> {
                   flex: 7,
                   child: Container(
                     alignment: Alignment.bottomLeft,
-                    child: ImageButton(
-                      imagePath: 'assets/ChangeTableButton.png',
-                      onPressed: () {}, //TODO: Change table
+                    child: const ImageButtonSVG(
+                      imagePath: 'assets/ChangeTableButton.svg',
+                      onPressed: changeTable, //TODO: Change table
                     ),
                   )),
               const Spacer(flex: 50),
@@ -269,7 +271,7 @@ class _TableBottleState extends State<TableBottle>
     return Center(
       child: RotationTransition(
         turns: _animation,
-        child: ImageButton(
+        child: ImageButtonSVG(
           imagePath: table.bottleSkinImage,
           onPressed: () {
             if (_controller.status == AnimationStatus.completed ||
@@ -295,7 +297,8 @@ class _TableBottleState extends State<TableBottle>
 }
 
 class TablePlayers extends StatefulWidget {
-  const TablePlayers({super.key});
+  final PlayTable table;
+  const TablePlayers({super.key, required this.table});
 
   @override
   State<TablePlayers> createState() => _TablePlayersState();
@@ -304,6 +307,9 @@ class TablePlayers extends StatefulWidget {
 class _TablePlayersState extends State<TablePlayers> {
   @override
   Widget build(BuildContext context) {
+    PlayTable table = widget.table;
+    User nullUser = User(firstName: "", secondName: "", isNullUser: true);
+
     return Column(
       children: [
         const Spacer(
@@ -319,26 +325,30 @@ class _TablePlayersState extends State<TablePlayers> {
               children: [
                 Transform.translate(
                   offset: Offset(0, MediaQuery.of(context).size.height / 20),
-                  child: const Player(),
+                  child: Player(
+                      user: table.users.isNotEmpty ? table.users[0] : nullUser),
                 ),
                 Transform.translate(
-                    offset: Offset(0, -MediaQuery.of(context).size.height / 20),
-                    child: const Player()),
+                  offset: Offset(0, -MediaQuery.of(context).size.height / 20),
+                  child: Player(
+                      user: table.users.length > 4 ? table.users[4] : nullUser),
+                ),
                 Transform.translate(
                   offset: Offset(0, MediaQuery.of(context).size.height / 20),
-                  child: const Player(),
+                  child: Player(
+                      user: table.users.length > 3 ? table.users[3] : nullUser),
                 ),
               ],
             ),
           ),
         ),
-        const Expanded(
+        Expanded(
           flex: 5,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Player(),
-              Player(),
+              Player(user: table.users.length > 6 ? table.users[6] : nullUser),
+              Player(user: table.users.length > 7 ? table.users[7] : nullUser),
             ],
           ),
         ),
@@ -353,14 +363,18 @@ class _TablePlayersState extends State<TablePlayers> {
               children: [
                 Transform.translate(
                   offset: Offset(0, -MediaQuery.of(context).size.height / 20),
-                  child: const Player(),
+                  child: Player(
+                      user: table.users.length > 2 ? table.users[2] : nullUser),
                 ),
                 Transform.translate(
-                    offset: Offset(0, MediaQuery.of(context).size.height / 50),
-                    child: const Player()),
+                  offset: Offset(0, MediaQuery.of(context).size.height / 50),
+                  child: Player(
+                      user: table.users.length > 5 ? table.users[5] : nullUser),
+                ),
                 Transform.translate(
                   offset: Offset(0, -MediaQuery.of(context).size.height / 20),
-                  child: const Player(),
+                  child: Player(
+                      user: table.users.length > 1 ? table.users[1] : nullUser),
                 ),
               ],
             ),
@@ -372,16 +386,24 @@ class _TablePlayersState extends State<TablePlayers> {
 }
 
 class Player extends StatefulWidget {
-  const Player({super.key});
+  final User user;
+  const Player({super.key, required this.user});
 
   @override
   State<Player> createState() => _PlayerState();
 }
 
 class _PlayerState extends State<Player> {
-  final User user = GlobalVariables.user; //TODO: Update to user from Table
   @override
   Widget build(BuildContext context) {
+    User user = widget.user;
+
+    if (user.isNullUser) {
+      return Container(
+        height: 100,
+      );
+    }
+
     return Column(
       children: [
         Expanded(
@@ -397,7 +419,8 @@ class _PlayerState extends State<Player> {
                               imagePath: user.avatar, onPressed: () {})),
                       ImageButton(
                           imagePath: user.border,
-                          onPressed: () {}), //TODO: Open profile
+                          onPressed:
+                              () {}), //TODO: Open gifts and add pofile Button near Musik Button
                     ],
                   ),
                 ))),

@@ -57,7 +57,7 @@ dev_dependencies:
 flutter:
   assets:
 #StartPage
-    - assets/HeartsCounterIcon.png
+    - assets/HeartsCounterIcon.svg
     - assets/MainPageBackground.png
     - assets/Logo.png
     - assets/MenuBackground.png
@@ -67,18 +67,19 @@ flutter:
 #PalyFieldPage
     - assets/PlayFieldBackground.png
     - assets/ChatBackground.png
-    - assets/GiftsButton.png
-    - assets/ReturnButton.png
-    - assets/ProfileButton.png
-    - assets/ChangeTableButton.png
+    - assets/ReturnButton.svg
+    - assets/ProfileButton.svg
+    - assets/ChangeTableButton.svg
     - assets/DefaultAvatar.png
+    - assets/OtherUserProfileButton.svg
+    - assets/MusicButton.svg
 
 #LoadingPage
     - assets/LoadingPageBackground.png
-    - assets/BigBottle.png
+    - assets/BigBottle.svg
     
 #BottleSkins
-    - assets/BottleSkins/MainBottleSkin.png
+    - assets/BottleSkins/MainBottleSkin.svg
 
 #TableSkins
     - assets/TableSkins/MainTableSkin.png

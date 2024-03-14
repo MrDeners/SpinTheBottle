@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HeartsCounter extends StatefulWidget {
   final int heartsAmount;
@@ -24,7 +25,7 @@ class _HeartsCounterState extends State<HeartsCounter> {
         heartsAmount.toString(),
         style: Theme.of(context).textTheme.bodyMedium,
       ),
-      icon: Image.asset('assets/HeartsCounterIcon.png'),
+      icon: SvgPicture.asset('assets/HeartsCounterIcon.svg'),
       style: ButtonStyle(backgroundColor: MaterialStateProperty.all(null)),
       onPressed: () {
         //TODO: Move to donate page
