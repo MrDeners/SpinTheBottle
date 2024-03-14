@@ -5,15 +5,16 @@ import 'package:spin_the_bottle/classes/bottleSkin.dart';
 class PlayTable {
   // ignore: non_constant_identifier_names
   final int _ID;
-  List<User> _users;
+  final List<User> _users;
   TableSkin _tableSkin;
   BottleSkin _bottleSkin;
-  List<User> _selectedUsers;
-  int _spinnerID;
-  Map _busyChairs;
-  Map _userIntervals;
+  final List<User> _selectedUsers;
+  final int _spinnerID;
+  final Map _busyChairs;
+  final Map _userIntervals;
 
   PlayTable(
+      // ignore: non_constant_identifier_names
       {required int ID,
       List<User>? users,
       int spinnerID = 0,
@@ -59,6 +60,7 @@ class PlayTable {
         _userIntervals = userIntervals,
         _selectedUsers = selectedUsers;
 
+  // ignore: non_constant_identifier_names
   int get ID => _ID;
   List<User> get users => _users;
   List<User> get selectedUsers => _selectedUsers;

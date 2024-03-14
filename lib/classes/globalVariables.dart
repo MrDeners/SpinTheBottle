@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 import 'package:spin_the_bottle/classes/user.dart';
 
 class GlobalVariables {

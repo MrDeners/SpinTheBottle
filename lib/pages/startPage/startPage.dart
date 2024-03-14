@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:spin_the_bottle/classes/globalVariables.dart';
 
@@ -60,7 +61,7 @@ class _StartPageState extends State<StartPage> {
 
 class MenuTop extends StatefulWidget {
   final User user;
-  MenuTop({super.key, required this.user});
+  const MenuTop({super.key, required this.user});
 
   @override
   State<MenuTop> createState() => _MenuTopState();
@@ -125,7 +126,7 @@ class Menu extends StatelessWidget {
                                 context,
                                 DownUpTranslation(
                                   exitPage: this,
-                                  enterPage: LoadingPage(),
+                                  enterPage: const LoadingPage(),
                                 ));
                           },
                         ),
