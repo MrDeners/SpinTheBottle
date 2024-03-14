@@ -5,7 +5,8 @@ import 'package:spin_the_bottle/translations/translations.dart';
 import 'package:spin_the_bottle/pages/pages.dart';
 
 class LoadingPage extends StatefulWidget {
-  const LoadingPage({Key? key}) : super(key: key);
+  final bool isRelaunch;
+  const LoadingPage({Key? key, this.isRelaunch = true}) : super(key: key);
 
   @override
   State<LoadingPage> createState() => _LoadingPageState();
@@ -15,14 +16,16 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 5), () {
-      Navigator.push(
-          context,
-          RightLeftTranslation(
-            exitPage: const StartPage(),
-            enterPage: const PlayFieldPage(),
-          ));
-    });
+    if (widget.isRelaunch) {
+      Future.delayed(const Duration(seconds: 5), () {
+        Navigator.pushReplacement(
+            context,
+            RightLeftTranslation(
+              exitPage: const LoadingPage(isRelaunch: false),
+              enterPage: const PlayFieldPage(),
+            ));
+      });
+    }
   }
 
   @override

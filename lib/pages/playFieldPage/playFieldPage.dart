@@ -153,7 +153,16 @@ class _TableButtonsState extends State<TableButtons> {
                   child: Container(
                     alignment: Alignment.topLeft,
                     child: ImageButton(
-                        imagePath: 'assets/ReturnButton.png', onPressed: () {}),
+                        imagePath: 'assets/ReturnButton.png',
+                        onPressed: () {
+                          //TODO: Create server request to leave
+                          Navigator.pushReplacement(
+                              context,
+                              UpDownTranslation(
+                                exitPage: const PlayFieldPage(),
+                                enterPage: const StartPage(),
+                              ));
+                        }),
                   )),
               Expanded(
                   flex: 15,

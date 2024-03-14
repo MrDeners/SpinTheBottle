@@ -122,7 +122,7 @@ class Menu extends StatelessWidget {
                         MainButton(
                           label: 'ИГРАТЬ',
                           onClick: () {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                                 context,
                                 DownUpTranslation(
                                   exitPage: this,
