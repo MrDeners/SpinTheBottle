@@ -1,6 +1,6 @@
-import 'package:spin_the_bottle/classes/user.dart';
-import 'package:spin_the_bottle/classes/tableSkin.dart';
-import 'package:spin_the_bottle/classes/bottleSkin.dart';
+import 'package:spin_the_bottle/Entities/user.dart';
+import 'package:spin_the_bottle/Entities/tableSkin.dart';
+import 'package:spin_the_bottle/Entities/bottleSkin.dart';
 
 class PlayTable {
   // ignore: non_constant_identifier_names

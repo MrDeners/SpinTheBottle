@@ -1,12 +1,12 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:spin_the_bottle/classes/globalVariables.dart';
+import 'package:spin_the_bottle/Entities/globalVariables.dart';
 
-import 'package:spin_the_bottle/classes/user.dart';
+import 'package:spin_the_bottle/Entities/user.dart';
 import 'package:spin_the_bottle/translations/translations.dart';
 import 'package:spin_the_bottle/pages/pages.dart';
 import 'package:spin_the_bottle/widgets/widgets.dart';
-import 'package:spin_the_bottle/pages/startPage/functions.dart';
+import 'package:spin_the_bottle/pages/start-page/functions.dart';
 
 class StartPage extends StatefulWidget {
   const StartPage({super.key});

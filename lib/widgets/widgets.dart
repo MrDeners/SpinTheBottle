@@ -1,4 +1,4 @@
-export 'ImageButton.dart';
-export 'MainButton.dart';
-export 'HeartCounter.dart';
-export 'ImageButtonSVG.dart';
+export 'image-button.dart';
+export 'main-button.dart';
+export 'heart-counter.dart';
+export 'image-button-svg.dart';

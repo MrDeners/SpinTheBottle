@@ -1,5 +1,5 @@
 // ignore_for_file: file_names
-import 'package:spin_the_bottle/classes/user.dart';
+import 'package:spin_the_bottle/Entities/user.dart';
 
 class GlobalVariables {
   static User user = User(
